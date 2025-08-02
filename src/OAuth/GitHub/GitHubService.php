@@ -22,7 +22,7 @@ class GitHubService
      * @return GitHubUser
      * @throws Exception
      */
-    public function getUserData(): GitHubUser
+    public function getUser(): GitHubUser
     {
         $response = $this->apiRequest('https://api.github.com/user');
         return GitHubUser::build((object) $response);

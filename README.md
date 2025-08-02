@@ -65,7 +65,7 @@ $token = $githubOAuth->getAccessToken($_GET['code']);
 $service = new GitHubService($token);
 
 // Get user data
-$user = $service->getUserData();
+$user = $service->getUser();
 $html = "Welcome, $user->login (GitHub ID: $user->id)<br>";
 
 // Get user repositories
