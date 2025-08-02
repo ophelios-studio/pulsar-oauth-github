@@ -48,6 +48,7 @@ services:
   github:
     client_id: !php/const GITHUB_CLIENT_ID
     client_secret: !php/const GITHUB_CLIENT_SECRET
+    callback: "/oauth/github/callback"
 ```
 
 ## Usage
@@ -56,7 +57,7 @@ services:
 
 ```php
 $config = new GitHubOauthConfiguration(Configuration::read('services')['github']);
-$githubOAuth = new GitHubOauth("/oauth/github/callback", $config);
+$githubOAuth = new GitHubOauth($config);
 $token = $githubOAuth->getAccessToken($_GET['code']);
 ```
 

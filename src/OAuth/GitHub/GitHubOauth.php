@@ -9,11 +9,11 @@ class GitHubOauth
     private GitHubOauthConfiguration $configuration;
     private string $redirectUri;
 
-    public function __construct(string $redirectRoute, GitHubOauthConfiguration $configuration)
+    public function __construct(GitHubOauthConfiguration $configuration)
     {
         $baseUrl = Application::getInstance()->getRequest()->getUrl()->getBaseUrl();
         $this->configuration = $configuration;
-        $this->redirectUri =  $baseUrl . $redirectRoute;
+        $this->redirectUri =  $baseUrl . $this->configuration->getCallback();
     }
 
     /**
