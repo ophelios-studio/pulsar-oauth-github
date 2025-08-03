@@ -59,12 +59,16 @@ class GitHubOauth
         ]);
 
         $response = file_get_contents($url, false, $context);
-
         if ($response === false) {
             throw new Exception("Failed to fetch access token.");
         }
 
         parse_str($response, $responseArray);
+        if ($responseArray['error']) {
+            throw new Exception($responseArray['error_description']
+                ?? "Unknown error (" . $responseArray['error'] . ") while retrieving GitHub access token.");
+        }
+
         if (isset($responseArray['access_token'])) {
             return $responseArray['access_token'];
         } else {
