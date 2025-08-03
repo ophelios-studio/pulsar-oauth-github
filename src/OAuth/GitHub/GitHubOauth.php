@@ -1,7 +1,6 @@
 <?php namespace Pulsar\OAuth\GitHub;
 
 use Exception;
-use Tracy\Debugger;
 use Zephyrus\Core\Application;
 
 class GitHubOauth
@@ -66,7 +65,6 @@ class GitHubOauth
         }
 
         parse_str($response, $responseArray);
-        Debugger::barDump($responseArray);
         if (isset($responseArray['access_token'])) {
             return $responseArray['access_token'];
         } else {
