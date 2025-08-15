@@ -46,8 +46,8 @@ Then, add the following into the `config.yml` file.
 ```yml
 services:
   github:
-    client_id: !php/const GITHUB_CLIENT_ID
-    client_secret: !php/const GITHUB_CLIENT_SECRET
+    client_id: !env GITHUB_CLIENT_ID
+    client_secret: !env GITHUB_CLIENT_SECRET
     callback: "/oauth/github/callback"
 ```
 
