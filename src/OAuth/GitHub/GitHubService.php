@@ -29,6 +29,22 @@ class GitHubService
     }
 
     /**
+     * Get the list of organizations the authenticated user belongs to.
+     *
+     * @return array List of organizations
+     * @throws Exception If the request fails
+     */
+    public function getUserOrganizations(): array
+    {
+        $response = $this->apiRequest('https://api.github.com/user/orgs');
+        foreach ($response as &$org) {
+            $org = (object) $org;
+        }
+        return $response;
+    }
+
+
+    /**
      * Get the list of repositories the user has access to.
      *
      * @return GitHubRepository[] List of repositories as an associative array
