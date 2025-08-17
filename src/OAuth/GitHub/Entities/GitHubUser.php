@@ -25,7 +25,7 @@ class GitHubUser extends Entity
     public ?string $blog;
     public ?string $location;
     public string $avatar_url;
-    public string $email;
+    public ?string $email;
     public bool $site_admin;
     public int $public_repos;
     public int $public_gists;
