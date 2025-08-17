@@ -13,6 +13,9 @@ class GitHubOauth
         $baseUrl = Application::getInstance()->getRequest()->getUrl()->getBaseUrl();
         $this->configuration = $configuration;
         $this->redirectUri =  $baseUrl . $this->configuration->getCallback();
+        if (str_starts_with($this->redirectUri, 'http://')) {
+            $this->redirectUri = str_replace('http://', 'https://', $this->redirectUri);
+        }
     }
 
     /**
