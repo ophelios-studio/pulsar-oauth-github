@@ -67,7 +67,7 @@ class GitHubOauth
         }
 
         parse_str($response, $responseArray);
-        if ($responseArray['error']) {
+        if (isset($responseArray['error']) && $responseArray['error']) {
             throw new Exception($responseArray['error_description']
                 ?? "Unknown error (" . $responseArray['error'] . ") while retrieving GitHub access token.");
         }
