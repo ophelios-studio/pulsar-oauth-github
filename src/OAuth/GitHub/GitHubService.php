@@ -76,6 +76,33 @@ class GitHubService
     }
 
     /**
+     * Get detailed information about a specific organization.
+     *
+     * @param string $orgName The organization's name/login
+     * @return object Organization details
+     * @throws Exception If the request fails
+     */
+    public function getOrganization(string $orgName): object
+    {
+        $response = $this->apiRequest("https://api.github.com/orgs/$orgName");
+        return (object) $response;
+    }
+
+    /**
+     * Get details of a specific repository from an organization.
+     *
+     * @param string $owner Organization/User name
+     * @param string $repo Repository name
+     * @return GitHubRepository
+     * @throws Exception If the request fails
+     */
+    public function getRepository(string $fullname): GitHubRepository
+    {
+        $response = $this->apiRequest("https://api.github.com/repos/$fullname");
+        return GitHubRepository::build((object) $response);
+    }
+
+    /**
      * Download the repository ZIP for a private repository.
      *
      * @param string $owner Repository owner
